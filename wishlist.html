@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Be Stylish Template">
+    <meta name="keywords" content="Be Stylish, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Be Stylish</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <!-- <div id="included-header"></div> -->
+    <header class="header">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img width="200px" height="70px" src="img/logos/3.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./products.html?category=women">Women’s</a></li>
+                            <li><a href="./products.html?category=men">Men’s</a></li>
+                            <li><a href="./products.html?category=kid">Kid’s</a></li>
+                            <li><a href="./products.html?category=cosmetic">Cosmetic</a></li>
+                            <li><a href="./products.html?category=accessories">Accessories</a></li>
+                            <!-- <li><a href="./shop.html">Shop</a></li> -->
+                            <!-- <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./product-details.html">Product Details</a></li>
+                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li> -->
+                            <!-- <li><a href="./blog.html">Blog</a></li> -->
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div id="LoginUser" class="header__right__auth">
+                            <a href="./login.html">Login</a>
+                            <a href="./register.html">Register</a>
+                        </div>
+                        <ul class="header__right__widget">
+                            <li><span class="icon_search search-switch"></span></li>
+                            <li><a href="./wishlist.html"><span class="icon_heart_alt"></span>
+                                    <!-- <div class="tip">2</div> -->
+                                </a></li>
+                            <li><a href="./shop-cart.html"><span class="icon_bag_alt"></span>
+                                    <!-- <div class="tip">2</div> -->
+                                </a></li>
+                            <li id="ddProfile" onclick="displayName()">
+                                <div class="dropdown">
+                                    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <span class="icon_profile"></span>
+                                        <!-- <div class="tip"></div> -->
+                                    </a>
+                                    <div>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a id="ddFirstName" href="#"></a></li>
+                                            <li class="dropdown-item" onclick="logout()"><a id="ddLogout">Logout</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Wishlist</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Cart Section Begin -->
+    <section class="shop-cart spad">
+        <div class="container" id="is_wishlist">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shop__cart__table">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="cart__btn">
+                        <a href="./index.html">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="not_wishlist">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h3>YOUR WISHLIST IS EMPTY</h3><br><br>
+                    <h5>                    Add items that you like to your wishlist. Review them anytime and easily move them to the bag.
+                    </h5>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <div class="wishlist__procced text-center">
+                        <a class="primary-btn col-md-3 mx-auto" href="./index.html">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+    <!-- Shop Cart Section End -->
+
+    <!-- Instagram Begin -->
+    <div class="instagram">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                    <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
+                        <div class="instagram__text">
+                            <i class="fa fa-instagram"></i>
+                            <a href="#">@ Be Stylish_shop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-7">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        cilisis.</p>
+                        <div class="footer__payment">
+                            <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
+                            <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-5">
+                    <div class="footer__widget">
+                        <h6>Quick links</h6>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="footer__widget">
+                        <h6>Account</h6>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Orders Tracking</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8">
+                    <div class="footer__newslatter">
+                        <h6>NEWSLETTER</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text">
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    </div>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
+<script src="js/login-register.js"></script>    <script src="js/products.js"></script>
+<script>
+     $(document).ready(function() {
+        var cartDataJSON = localStorage.getItem('cart')? localStorage.getItem('cart') : '[]';
+        var cartData = JSON.parse(cartDataJSON);
+
+        var cartTableBody = $('.cart-table tbody');
+
+        $.each(cartData, function(index, item) {
+            $.each(products, function(j, product) {
+                console.log(item.quantity)
+                if(item.product_id == product.id){
+                var tr = '<tr><td class="cart__product__item"><img width="90px" src="' + product.images[1] + '" alt=""><div class="cart__product__item__title"><h6><a style=" color: black;text-decoration: none; " href="product-details.html?id='+product.id+'">' + product.name + '</a></h6><div class="rating">';
+                
+                // add stars based on product rating
+                for (var i = 0; i < product.rating; i++) {
+                    tr += '<i class="fa fa-star"> </i> ';
+                }
+                var final_price = (parseFloat(product.price) * parseInt(item.quantity)).toFixed(2);
+                tr += '</div></div></td><td class="cart__price">$ ' + product.price + '</td></tr>';
+                
+                var trElement = document.createElement('tr');
+                trElement.innerHTML = tr;
+                
+                cartTableBody.append(trElement);
+                }
+            });
+        });
+        updateTotal();
+
+        $('.pro-qty').on('click', '.qtybtn', function() {
+            var $button = $(this);
+            var oldValue = $button.parent().find('input').val();
+            if ($button.hasClass('inc')) {
+                var newVal = parseFloat(oldValue) + 1;
+            } else {
+                var newVal = parseFloat(oldValue) - 1;
+                newVal = Math.max(newVal, 0);
+            }
+            $button.parent().find('input').val(newVal);
+
+            // get the product ID and update the quantity in the cartData array
+            var productId = $button.parent().find('input').attr('id');
+            var cartItem = cartData.find(function(item) {
+                return item.product_id == productId;
+            });
+            if (cartItem) {
+                cartItem.quantity = newVal;
+            }
+
+            // update the cartData in the localStorage
+            localStorage.setItem('cart', JSON.stringify(cartData));
+
+            // get the product price and calculate the new final price
+            var $price = $button.parents('.cart__quantity').siblings('.cart__price');
+            var priceVal = parseFloat($price.text().replace('$ ', ''));
+            var newFinalPrice = (priceVal * newVal).toFixed(2);
+
+            // update the final price in the cart
+            $button.parents('.cart__quantity').siblings('.cart__total').text('$ ' + newFinalPrice);
+
+            // Call the updateTotal function
+            updateTotal();
+        });
+
+
+        // function to remove an item from the cart
+        function removeItem($element) {
+            var productId = $element.parent().siblings('.cart__quantity').find('input').attr('id');
+            cartData = cartData.filter(function(item) {
+                return item.product_id != productId;
+            });
+            localStorage.setItem('cart', JSON.stringify(cartData));
+            $element.parents('tr').remove();
+            // Call the updateTotal function
+            updateTotal();
+        }
+
+        // listen for clicks on the icon_close element and remove the corresponding item
+        $('body').on('click', '.icon_close', function() {
+            removeItem($(this));
+        });
+
+        function updateTotal() {
+            var subtotal = 0;
+            $('.cart__total').each(function() {
+                var price = parseFloat($(this).text().replace('$ ', ''));
+                subtotal += price;
+            });
+            var couponCode = $('.discount__content input').val().toUpperCase();
+
+            var tax = subtotal * 0.13;
+            var delivery_fee = 0;
+            var discount = 0;
+
+            if (couponCode == "BS_DISCOUNT10" || couponCode == "BS_SAVE10") {
+                // Apply 10% discount and free delivery
+                discount = subtotal * 0.1;
+                delivery_fee = 0;
+            } else {
+                // No discount, add $5 delivery fee
+                discount = 0;
+                delivery_fee = 5;
+            }
+
+            var total = subtotal + tax - discount + delivery_fee;
+
+            // Update the subtotal, tax, delivery fee, discount, and total values in the HTML
+            $('#subtotal').text('$ ' + subtotal.toFixed(2));
+            $('#tax').text('$ ' + tax.toFixed(2));
+            $('#delivery-fee').text('$ ' + delivery_fee.toFixed(2));
+            $('#discount').text('$ ' + discount.toFixed(2));
+            $('#total').text('$ ' + total.toFixed(2));
+        }
+
+
+        $('.coupn button').click(function(e) {
+            e.preventDefault();
+            var couponCode = $('.discount__content input').val().toUpperCase();
+            if (couponCode == "BS_DISCOUNT10" || couponCode == "BS_SAVE10") {
+                alert('Congratulations, your coupon is valid!')
+            }else{
+                alert("Sorry, that coupon code is not valid.");
+            }
+            updateTotal();
+        });
+     });
+</script>
+</body>
+
+</html>
