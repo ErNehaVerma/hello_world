@@ -26,25 +26,25 @@ function formValidation(event) {
     // validate email and reEmail value
     if (email.value == "") {
         email.setCustomValidity('Please enter your email.');
-       
+
         return;
     }
     if (reEmail.value == "") {
         reEmail.setCustomValidity('Please enter your email again.');
-        
+
         return;
     }
     // Comparing email and re-enter email
     if (email.value != reEmail.value) {
         reEmail.setCustomValidity('Email addresses do not match.');
-        
+
         return;
     }
 
 
     if (password.value == "") {
         password.setCustomValidity('Please enter your Password.');
-        
+
         return;
     }
     else {
@@ -52,7 +52,7 @@ function formValidation(event) {
         // Test the password against the regular expression
         if (!passwordRegex.test(password.value)) {
             password.setCustomValidity("Password must contain at least one lowercase letter, one uppercase letter, one digit, and be at least 6 characters long.");
-            
+
             return;
         }
     }
@@ -61,7 +61,8 @@ function formValidation(event) {
     const userData = {
         firstName: firstName.value,
         email: email.value,
-        password: password.value
+        password: password.value,
+        wishList: []
     };
 
     // Get existing login data from local storage
@@ -100,7 +101,7 @@ function reset() {
 function displayName() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // Adding Name for the Profile
-    document.getElementById('ddFirstName').innerHTML= currentUser && currentUser.firstName;
+    document.getElementById('ddFirstName').innerHTML = currentUser && currentUser.firstName;
 }
 
 
@@ -146,33 +147,42 @@ function formvalidationLoginPage(event) {
     // Removing login/register after login
     console.log("Login User ", document.getElementById('LoginUser'));
     // currentUser && currentUser.length ? document.getElementById('LoginUser').style.display = 'none' : null;
-    
 
-        // for (var i = 0; i < removeLoginRegister.length; i++) {
-        //     removeLoginRegister[i].style.display = 'none';
-        // }
+
+    // for (var i = 0; i < removeLoginRegister.length; i++) {
+    //     removeLoginRegister[i].style.display = 'none';
+    // }
 
 }
 
 
-function logout()
-{
+function logout() {
+    const currentUser = JSON.parse(localStorage.getItem(currentUser));
+    // getting user db
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    // updating to add the current user updates
+    const newUserData = userData.map(user => {
+        if (user.email === currentUser.email) {
+            return currentUser;
+        }
+    });
+    // updating user db
+    localStorage.setItem("userData", JSON.stringify(newUserData));
+
     // Remove saved login data from local storage
     localStorage.removeItem('currentUser');
 
     // Redirect the user to the login page
     window.location.assign('index.html');
-
-
 }
 
 window.onload = function () {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if(currentUser) {
+    if (currentUser) {
         const loginUser = document.getElementById("LoginUser");
         loginUser.style.display = 'none';
     }
-    else{
+    else {
         const ddProfile = document.getElementById("ddProfile");
         ddProfile.style.display = 'none';
     }
