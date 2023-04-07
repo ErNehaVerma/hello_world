@@ -118,16 +118,14 @@ function formvalidationLoginPage(event) {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
-
     email.setCustomValidity('');
     password.setCustomValidity('');
 
-    if (email.value == "") {
+    if (email.value == " ") {
         email.setCustomValidity('Please enter your email.');
     }
 
-
-    if (password.value == "") {
+    if (password.value == " ") {
         password.setCustomValidity('Please enter your Password.');
     }
     else {
@@ -138,7 +136,7 @@ function formvalidationLoginPage(event) {
         // Get saved login data from local storage
         const savedData = JSON.parse(localStorage.getItem('userData'));
         const userExists = savedData.filter(user => user.email === inputEmail && user.password === inputPassword);
-
+        console.log(userExists)
         // Check if login was successful
         if (userExists.length) {
             console.log("Login User ", document.getElementById('LoginUser'));
