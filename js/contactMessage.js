@@ -10,23 +10,18 @@ function userMsg()
     // Add a click event listener to the submit button
     submitButton.addEventListener('click', function() 
     {
-        firstName.setCustomValidity('');
-        email.setCustomValidity('');
+        user_name.setCustomValidity('');
+        user_email.setCustomValidity('');
 
-        if ((firstName.value == "")) 
+        if ((user_name.value == "")) 
         {
-            firstName.setCustomValidity('Please enter your First Name');
-            return;
-        }
-        if ((lastName.value == "")) 
-        {
-            lastName.setCustomValidity('Please enter your Last name.');
+            user_name.setCustomValidity('Please enter your First Name');
             return;
         }
         // validate email and reEmail value
-        if (email.value == "") 
+        if (user_email.value == "") 
         {
-            email.setCustomValidity('Please enter your email.');
+            user_email.setCustomValidity('Please enter your email.');
             return;
         }
         // Get the user's message from the input field
@@ -38,10 +33,10 @@ function userMsg()
         };
 
         // Convert the user data to a JSON string
-        // const userDataJSON = JSON.stringify(userData);
+        const userDataJSON = JSON.stringify(userData);
 
         // Save the message to local storage
-        localStorage.setItem('userMessage', userData);
+        localStorage.setItem('userMessage', userDataJSON);
         alert('Your message sent successfully..');
         // Clear the input field
         user_name.value = '';
