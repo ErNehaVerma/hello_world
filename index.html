@@ -109,8 +109,7 @@
                                 <div class="dropdown">
                                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                                         aria-expanded="false">
-                                        <span class="icon_profile"></span>
-                                        <!-- <div class="tip"></div> -->
+                                        <span class="user-icon"></span>
                                     </a>
                                     <div>
                                         <ul class="dropdown-menu">
@@ -681,13 +680,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a onclick="addToWishList('${encodeURI(JSON.stringify(product))}')">
+                                        <a onclick="addToWishList('${encodeURI(JSON.stringify(product))}','wish')">
                                             <span class="icon_heart_alt"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a srcID="${product.id}">
-                                            <span  class="icon_bag_alt"></span>
+                                        <a onclick="addToWishList('${encodeURI(JSON.stringify(product))}','cart')">
+                                            <span class="icon_bag_alt"></span>
                                         </a>
                                     </li>
                                 </ul>
@@ -710,43 +709,42 @@
                     container.appendChild(cardWrapper);
                 }
 
-                // Get the "icon_heart_alt" element
-                var heartIcon = document.querySelector(".icon_heart_alt");
+                // // Get the "icon_heart_alt" element
+                // var heartIcon = document.querySelector(".icon_heart_alt");
 
-                // Add an event listener to the element
-                heartIcon.addEventListener("click", toggleWishlist);
+                // // Add an event listener to the element
+                // heartIcon.addEventListener("click", toggleWishlist);
 
-                function toggleWishlist() {
-                    alert('sgsdgd')
-                    // Get the product ID from the URL
-                    var urlParams = new URLSearchParams(window.location.search);
-                    var productId = urlParams.get("id");
+                // function toggleWishlist() {
+                //     // Get the product ID from the URL
+                //     var urlParams = new URLSearchParams(window.location.search);
+                //     var productId = urlParams.get("id");
 
-                    // Get the current user ID from the local storage
-                    var currentUserId = localStorage.getItem("current_user_id");
+                //     // Get the current user ID from the local storage
+                //     var currentUserId = localStorage.getItem("current_user_id");
 
-                    // Get the current wishlist array from the local storage
-                    var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+                //     // Get the current wishlist array from the local storage
+                //     var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-                    // Check if the item is already in the wishlist
-                    var index = wishlist.findIndex(function (item) {
-                        return item.productId === productId && item.userId === currentUserId;
-                    });
+                //     // Check if the item is already in the wishlist
+                //     var index = wishlist.findIndex(function (item) {
+                //         return item.productId === productId && item.userId === currentUserId;
+                //     });
 
-                    // If the item is already in the wishlist, remove it
-                    if (index !== -1) {
-                        wishlist.splice(index, 1);
-                        heartIcon.classList.remove("active");
-                    }
-                    // If the item is not in the wishlist, add it
-                    else {
-                        wishlist.push({ productId: productId, userId: currentUserId });
-                        heartIcon.classList.add("active");
-                    }
+                //     // If the item is already in the wishlist, remove it
+                //     if (index !== -1) {
+                //         wishlist.splice(index, 1);
+                //         heartIcon.classList.remove("active");
+                //     }
+                //     // If the item is not in the wishlist, add it
+                //     else {
+                //         wishlist.push({ productId: productId, userId: currentUserId });
+                //         heartIcon.classList.add("active");
+                //     }
 
-                    // Save the updated wishlist array to the local storage
-                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-                }
+                //     // Save the updated wishlist array to the local storage
+                //     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                // }
             }
 
             $('.image-popup').on('click', function (e) {
@@ -778,51 +776,64 @@
 
 
 
-            $('.icon_bag_alt').on('click', function (event) {
-                event.preventDefault(); // Stop the default behavior of the button
-                var product_id = $(this).attr('srcID');
+            // $('.icon_bag_alt').on('click', function (event) {
+            //     event.preventDefault(); // Stop the default behavior of the button
 
-                // Get the product ID and quantity from the form
+                // var urlParams = new URLSearchParams(window.location.search);
+                // var productId = urlParams.get("id");
 
-                var current_user_JSON = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : '[]';
-                var current_user_Obj = JSON.parse(current_user_JSON);
-                // Create an object to store the cart data
-                if (current_user_Obj.length > 0) {
-                    var cart_data = {
-                        'email': current_user_Obj.email,
-                        'product_id': product_id,
-                        'quantity': 1
-                    };
+                // Get the current user ID from the local storage
+                // var currentUserId = localStorage.getItem("current_user_id");
 
-                    // Get the existing cart data from LocalStorage
-                    var cartDataJSON = localStorage.getItem('cart') ? localStorage.getItem('cart') : '[]';
-                    var cartDataObj = JSON.parse(cartDataJSON);
-                    // Search for the product ID in the cart data
-                    var update = 0;
-                    var cartDataArray = Object.values(cartDataObj);
+                // Get the current wishlist array from the local storage
+                // var wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-                    $.each(cartDataArray, function (index, item) {
-                        if (item.product_id == product_id) {
-                            cartDataArray[index].quantity = parseInt(cartDataArray[index].quantity) + parseInt(quantity);
-                            update = 1;
-                            return
-                        }
-                    });
+                // Check if the item is already in the wishlist
+                // var index = wishlist.findIndex(function (item) {
+                //     return item.productId === productId && item.userId === currentUserId;
+                // });
 
-                    if (update == 0)
-                        cartDataArray.push(cart_data);
+                // var product_id = $(this).attr('srcID');
 
-                    // Save the updated cart data to LocalStorage
-                    localStorage.setItem('cart', JSON.stringify(cartDataArray));
-                    alert('Item added successfully into the cart!!')
+                // var current_user_JSON = localStorage.getItem('currentUser') ? localStorage.getItem('currentUser') : '[]';
+                // var current_user_Obj = JSON.parse(current_user_JSON);
+                // // Create an object to store the cart data
+                // if (current_user_Obj.length > 0) {
+                //     var cart_data = {
+                //         'email': current_user_Obj.email,
+                //         'product_id': product_id,
+                //         'quantity': 1
+                //     };
 
-                    // Navigate to the shopping cart page
-                    window.location.href = 'shop-cart.html';
-                } else {
-                    alert('Kindly Login or Sign-up first to add item in cart!!')
-                    window.location.href = 'login.html';
-                }
-            });
+                //     // Get the existing cart data from LocalStorage
+                //     var cartDataJSON = localStorage.getItem('cart') ? localStorage.getItem('cart') : '[]';
+                //     var cartDataObj = JSON.parse(cartDataJSON);
+                //     // Search for the product ID in the cart data
+                //     var update = 0;
+                //     var cartDataArray = Object.values(cartDataObj);
+
+                //     $.each(cartDataArray, function (index, item) {
+                //         if (item.product_id == product_id) {
+                //             cartDataArray[index].quantity = parseInt(cartDataArray[index].quantity) + parseInt(quantity);
+                //             update = 1;
+                //             return
+                //         }
+                //     });
+
+                //     if (update == 0)
+                //         cartDataArray.push(cart_data);
+
+                //     // Save the updated cart data to LocalStorage
+                //     localStorage.setItem('cart', JSON.stringify(cartDataArray));
+                //     alert('Item added successfully into the cart!!')
+
+                //     // Navigate to the shopping cart page
+                //     window.location.href = 'shop-cart.html';
+                // } else {
+                //     alert('Kindly Login or Sign-up first to add item in cart!!')
+                //     window.location.href = 'login.html';
+                // }
+            // });
         });
 
 

@@ -59,10 +59,13 @@ function formValidation(event) {
 
     // Create object to hold login credentials
     const userData = {
+        user_id : 1,
         firstName: firstName.value,
         email: email.value,
         password: password.value,
-        wishList: []
+        wishList: [],
+        cart:[]
+
     };
 
     // Get existing login data from local storage
@@ -72,7 +75,12 @@ function formValidation(event) {
     const userAlreadyExists = existingData.filter(user => user.email === userData.email);
     if (!userAlreadyExists.length) {
         // Add new login data to array
-        existingData.push(userData);
+        if(existingData.length == 0){
+            existingData.push(userData);
+        }else{
+            userData.user_id++;
+            existingData.push(userData);
+        }
 
         // Save updated login data to local storage
         localStorage.setItem('userData', JSON.stringify(existingData));
@@ -157,17 +165,17 @@ function formvalidationLoginPage(event) {
 
 
 function logout() {
-    const currentUser = JSON.parse(localStorage.getItem(currentUser));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     // getting user db
-    const userData = JSON.parse(localStorage.getItem("userData"));
-    // updating to add the current user updates
-    const newUserData = userData.map(user => {
-        if (user.email === currentUser.email) {
-            return currentUser;
-        }
-    });
+    // const userData = JSON.parse(localStorage.getItem("userData"));
+    // // updating to add the current user updates
+    // const newUserData = userData.map(user => {
+    //     if (user.email === currentUser.email) {
+    //         return currentUser;
+    //     }
+    // });
     // updating user db
-    localStorage.setItem("userData", JSON.stringify(newUserData));
+    // localStorage.setItem("userData", JSON.stringify(newUserData));
 
     // Remove saved login data from local storage
     localStorage.removeItem('currentUser');

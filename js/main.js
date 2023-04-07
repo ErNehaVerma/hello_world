@@ -260,6 +260,12 @@
       });
       
 
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const userIcon = $('.user-icon');
+      const firstLetter = currentUser.firstName.charAt(0);
+      userIcon.text(firstLetter);
+      
+
     
 
         
