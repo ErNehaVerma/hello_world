@@ -524,8 +524,7 @@ var categories = [
         "id":"men",
         "name": "Men",    
         "description": "This is the description for product 1",
-        "category":"men",
-        "image" : "img/banner/banner-4.jpg",
+        "image" : "img/banner/5.jpeg",
         "rating": 3,
         "label": 'new', 
         "banner" : [
@@ -538,36 +537,33 @@ var categories = [
         "id":'women',
         "name": "Women Clothing",    
         "description": "This is the description for product 2",
-        "category":"men",
-        "image" : "img/banner/banner-1.jpg",
+        "image" : "img/banner/2.jpg",
         "rating": 4,  
         "label": 'stockout',  
         "banner" : {
-            0 : "jacket",
-            1 : 'hat',
-            2 : 'belt' 
+            0 : "Luminous Lace",
+            1 : 'Casual Couture',
+            2 : 'Urban Chic' 
         }    
     },
     {    
         "id":'kid',
         "name": "kid Clothing",    
         "description": "This is the description for product 2",
-        "category":"men",
-        "image" : "img/banner/banner-2.jpg",
+        "image" : "img/banner/9.jpeg",
         "rating": 4,  
         "label": 'stockout',  
         "banner" : {
-            0 : "jacket",
-            1 : 'hat',
-            2 : 'belt' 
+            0 : "Tiny Treasures",
+            1 : 'Girls Buckle Decor Flats',
+            2 : 'Floral Print Pants' 
         }    
     },
     {    
         "id":'cosmetic',
         "name": "cosmetic",    
         "description": "This is the description for product 2",
-        "category":"men",
-        "image" : "img/banner/banner-1.jpg",
+        "image" : "img/banner/7.jpeg",
         "rating": 4,  
         "label": 'stockout',  
         "banner" : {
@@ -580,14 +576,13 @@ var categories = [
         "id":'accessories',
         "name": "accessories",    
         "description": "This is the description for product 2",
-        "category":"men",
-        "image" : "img/banner/banner-1.jpg",
+        "image" : "img/banner/8.jpeg",
         "rating": 4,  
         "label": 'stockout',  
         "banner" : {
-            0 : "jacket",
-            1 : 'hat',
-            2 : 'belt' 
+            0 : "Leather Structured Handheld Bag",
+            1 : 'black fashion glasses',
+            2 : 'Solid Leather Handheld' 
         }    
     }
 ];
