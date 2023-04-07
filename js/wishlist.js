@@ -1,41 +1,44 @@
-function addToWishList(productToAdd,type) {
+function addToWishList(productToAdd, type) {
+  console.log("here in add to list ", productToAdd, " type ", type);
   // Item to add
   const item = JSON.parse(decodeURI(productToAdd));
   // Getting currentUser from local Storage
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const userData = JSON.parse(localStorage.getItem('userData'));
-  const filteredUserData = userData.filter((user) => user.user_id === currentUser.user_id);
+
 
   // Getting item index
-  if(type == 'wish'){
+  if (type == 'wish') {
     const itemIndex = currentUser.wishList.findIndex(product => product.id === item.id);
-     // if item exists then delete the indexs
+    // if item exists then delete the indexs
     if (itemIndex > -1) {
       currentUser.wishList.splice(itemIndex, 1);
+      alert("Successfully removed from wishlist");
     }
     else {
       currentUser.wishList = [...currentUser.wishList, item];
     }
-  }else{
-    const itemIndex = currentUser.cart.findIndex(product => product.id === item.id);
-    const userIndex = userData.cart.findIndex(product => product.id === item.id);
-
-     // if item exists then delete the indexs
-    if (itemIndex > -1) {
-      currentUser.cart.splice(itemIndex, 1);
-    }
-    else {
-      var data = {
-
-      }
-      currentUser.cart = [...currentUser.cart, item];
+    alert("Successfully added to Wishlist");
+  }
+  else {
+    const itemIndex = currentUser.cart.findIndex(product => product.product_id === item.id);
+    if (itemIndex < 0) {
+      currentUser.cart.push({ product_id: item.id, quantity: 1 });
+      const indexToDelete = currentUser.wishList.findIndex(pItem => pItem.id === item.id);
+      currentUser.wishList.splice(indexToDelete, 1);
     }
   }
- 
-
   // updating currentUser in local storage 
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
-  document.getElementById('wishListTip').innerHTML = `${currentUser.wishList.length}`;
+  const newUserData = userData.map(user => {
+    if (user.email === currentUser.email) {
+      return currentUser;
+    }
+    return user;
+  });
+  // updating user db
+  localStorage.setItem("userData", JSON.stringify(newUserData));
+  location.reload();
 }
 
 // function to remove an item from the cart

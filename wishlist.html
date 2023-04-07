@@ -56,78 +56,7 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <!-- <div id="included-header"></div> -->
-    <header class="header">
-        <div class="container-fluid ">
-            <div class="row">
-                <div class="col-xl-3 col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html"><img width="200px" height="70px" src="img/logos/3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-7">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./products.html?category=women">Women’s</a></li>
-                            <li><a href="./products.html?category=men">Men’s</a></li>
-                            <li><a href="./products.html?category=kid">Kid’s</a></li>
-                            <li><a href="./products.html?category=cosmetic">Cosmetic</a></li>
-                            <li><a href="./products.html?category=accessories">Accessories</a></li>
-                            <!-- <li><a href="./shop.html">Shop</a></li> -->
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                            <!-- <li><a href="./blog.html">Blog</a></li> -->
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__right">
-                        <div id="LoginUser" class="header__right__auth">
-                            <a href="./login.html">Login</a>
-                            <a href="./register.html">Register</a>
-                        </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./wishlist.html"><span class="icon_heart_alt"></span>
-                                    <!-- <div class="tip">2</div> -->
-                                </a></li>
-                            <li><a href="./shop-cart.html"><span class="icon_bag_alt"></span>
-                                    <!-- <div class="tip">2</div> -->
-                                </a></li>
-                            <li id="ddProfile" onclick="displayName()">
-                                <div class="dropdown">
-                                    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                        aria-expanded="false">
-                                     <span class="user-icon"></span>
-
-                                        <!-- <div class="tip"></div> -->
-                                    </a>
-                                    <div>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a id="ddFirstName" href="#"></a></li>
-                                            <li class="dropdown-item" onclick="logout()"><a id="ddLogout">Logout</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+    <div id="included-header"></div>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -156,6 +85,7 @@
                                 <tr>
                                     <th>Product</th>
                                     <th>Price</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -342,7 +272,6 @@
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
-
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
@@ -358,6 +287,10 @@
         $(document).ready(function () {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const wishList = currentUser.wishList;
+            if (wishList.length) {
+                $("#not_wishlist").addClass("d-none");
+            }
+            else $("#is_wishlist").addClass("d-none");
             console.log("wishlist ", wishList)
             var wishListTableBody = $('.wishlist-table tbody');
 
@@ -369,6 +302,9 @@
                     tr += '<i class="fa fa-star"> </i> ';
                 }
                 tr += `</div></div></td><td class="cart__price">$ ${product.price}</td>
+                <td class="add_cart">
+                    <span class="icon_bag_alt" onclick="addToWishList('${encodeURI(JSON.stringify(product))}', 'cart')"></span>
+                </td>
                 <td class="cart__close">
                     <span class="icon_close" onclick="removeItem('${encodeURI(JSON.stringify(product))}')"></span>
                 </td></tr>`;
