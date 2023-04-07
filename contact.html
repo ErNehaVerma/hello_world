@@ -111,11 +111,10 @@
                         <div class="contact__form">
                             <h5>SEND MESSAGE</h5>
                             <form action="#">
-                                <input type="text" placeholder="Name">
-                                <input type="text" placeholder="Email">
-                                <input type="text" placeholder="Website">
-                                <textarea placeholder="Message"></textarea>
-                                <button type="submit" class="site-btn">Send Message</button>
+                                <input type="text" placeholder="Name" id="name">
+                                <input type="text" placeholder="Email" id="mail">
+                                <textarea placeholder="Message" id="message"></textarea>
+                                <button type="submit" id="submit-button" class="site-btn" onclick="userMsg()">Send Message</button>
                             </form>
                         </div>
                     </div>
@@ -291,6 +290,9 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.nicescroll.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/login-register.js"></script></body>
+<script src="js/login-register.js"></script>
+<script src="js/contactMessage.js"></script>
+
+</body>
 
 </html>
