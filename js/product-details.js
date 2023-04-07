@@ -71,8 +71,6 @@ $(document).ready(function() {
            else {
                 filteredUserData.cart = [...filteredUserData.cart, cart_data];
            }
-           console.log(filteredUserData);
-           console.log(userData);
 
            localStorage.setItem("userData", JSON.stringify(userData));
 

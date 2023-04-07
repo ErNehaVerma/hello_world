@@ -59,12 +59,12 @@ function formValidation(event) {
 
     // Create object to hold login credentials
     const userData = {
-        user_id : 1,
+        user_id: 1,
         firstName: firstName.value,
         email: email.value,
         password: password.value,
         wishList: [],
-        cart:[]
+        cart: []
 
     };
 
@@ -75,9 +75,9 @@ function formValidation(event) {
     const userAlreadyExists = existingData.filter(user => user.email === userData.email);
     if (!userAlreadyExists.length) {
         // Add new login data to array
-        if(existingData.length == 0){
+        if (existingData.length == 0) {
             existingData.push(userData);
-        }else{
+        } else {
             userData.user_id++;
             existingData.push(userData);
         }
@@ -118,16 +118,14 @@ function formvalidationLoginPage(event) {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
-
     email.setCustomValidity('');
     password.setCustomValidity('');
 
-    if (email.value == "") {
+    if (email.value == " ") {
         email.setCustomValidity('Please enter your email.');
     }
 
-
-    if (password.value == "") {
+    if (password.value == " ") {
         password.setCustomValidity('Please enter your Password.');
     }
     else {
@@ -138,7 +136,7 @@ function formvalidationLoginPage(event) {
         // Get saved login data from local storage
         const savedData = JSON.parse(localStorage.getItem('userData'));
         const userExists = savedData.filter(user => user.email === inputEmail && user.password === inputPassword);
-
+        console.log(userExists)
         // Check if login was successful
         if (userExists.length) {
             console.log("Login User ", document.getElementById('LoginUser'));
@@ -165,17 +163,6 @@ function formvalidationLoginPage(event) {
 
 
 function logout() {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    // getting user db
-    // const userData = JSON.parse(localStorage.getItem("userData"));
-    // // updating to add the current user updates
-    // const newUserData = userData.map(user => {
-    //     if (user.email === currentUser.email) {
-    //         return currentUser;
-    //     }
-    // });
-    // updating user db
-    // localStorage.setItem("userData", JSON.stringify(newUserData));
 
     // Remove saved login data from local storage
     localStorage.removeItem('currentUser');
@@ -183,15 +170,3 @@ function logout() {
     // Redirect the user to the login page
     window.location.assign('index.html');
 }
-
-window.onload = function () {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser) {
-        const loginUser = document.getElementById("LoginUser");
-        loginUser.style.display = 'none';
-    }
-    else {
-        const ddProfile = document.getElementById("ddProfile");
-        ddProfile.style.display = 'none';
-    }
-};

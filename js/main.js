@@ -2,6 +2,7 @@
 'use strict';
 
 (function ($) {
+    window.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     /*------------------
         Preloader
@@ -15,6 +16,8 @@
         const page = './'+parts.pop();
         const menuLinks = document.querySelectorAll('.header__menu a');
         const menuLi = document.querySelectorAll('.header__menu li');
+
+
 
         for (let i = 0; i < menuLinks.length; i++) {
         const linkUrl = menuLinks[i].getAttribute('href');
@@ -42,8 +45,7 @@
 	--------------------- */
 
     $(function(){
-        $("#included-header").load("header.html");
-        $("#included-header").focus();
+        $("#included-footer").load("footer.html");
     });
    
 
@@ -254,22 +256,30 @@
         $(this).addClass('active');
     });
 
+    window.onload = function () {
+        setTimeout(()=>{
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            console.log("curren user ", currentUser);
+            if (currentUser) {
+                const loginUser = document.getElementById("LoginUser");
+                loginUser.style.display = 'none';
+            }
+            else {
+                const ddProfile = document.getElementById("ddProfile");
+                ddProfile.style.display = 'none';
+            }
+        }, 1000)
+    };
 
     $(document).ready(function() {
         
       });
       
 
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      const userIcon = $('.user-icon');
-      const firstLetter = currentUser.firstName.charAt(0);
-      userIcon.text(firstLetter);
+      if(currentUser){
+        const userIcon = $('.user-icon');
+        const firstLetter = currentUser.firstName.charAt(0);
+        userIcon.text(firstLetter);
+      }
       
-
-    
-
-        
-
-  
-
 })(jQuery);

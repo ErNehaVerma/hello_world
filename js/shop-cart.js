@@ -95,6 +95,8 @@ function removeItem(i) {
     var filteredUserData = userData[i]['cart'];
     filteredUserData.splice(i, 1);
     localStorage.setItem('userData', JSON.stringify(userData));
+    currentUser.cart.splice(i,1);
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
     // Call the updateTotal function
     location.reload();
 }

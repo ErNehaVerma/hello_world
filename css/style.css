@@ -1153,6 +1153,10 @@ ol {
 	top: 0;
 }
 
+.red_bg {
+	color: #ca1515;
+}
+
 .product__item.sale .product__item__pic .label {
 	background: #ca1515;
 }
