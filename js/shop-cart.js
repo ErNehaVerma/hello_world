@@ -116,7 +116,7 @@ function updateTotal() {
         discount = subtotal * 0.1;
         delivery_fee = 0;
     } else {
-        // No discount, add $5 delivery fee
+        // No discount, add $5 delivery fees
         discount = 0;
         delivery_fee = 5;
     }
