@@ -72,7 +72,7 @@
                             <li><a href="./index.html">Home</a></li>
                             <li><a href="./products.html?category=women">Women’s</a></li>
                             <li><a href="./products.html?category=men">Men’s</a></li>
-                            <li><a href="./products.html?category=kid">Kid’s</a></li>
+                            <li><a href="./products.html?category=kids">Kid’s</a></li>
                             <li><a href="./products.html?category=cosmetic">Cosmetic</a></li>
                             <li><a href="./products.html?category=accessories">Accessories</a></li>
                             <!-- <li><a href="./shop.html">Shop</a></li> -->
@@ -472,9 +472,6 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    
-
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -486,7 +483,8 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
-<script src="js/login-register.js"></script>    <script src="js/products.js"></script>
+    <script src="js/login-register.js"></script>   
+    <script src="js/products.js"></script>
 
     <script>
         var queryString = window.location.search;
@@ -509,12 +507,12 @@
             $('.banner__text h1.text_2').text(categoryRecord.banner[1]);
             $('.banner__text h1.text_3').text(categoryRecord.banner[2]);
 
-
-    
         // get reference to the container
          var container = document.querySelector('#property__gallery');
             var productRecords = []
-         products.forEach(element => {
+            products.forEach(element => {
+                console.log(cat, element.category);
+
                 if(element.category == cat){
                     productRecords.push(element);
                 }
@@ -540,8 +538,6 @@
      
          // append the product card to the container
        container.appendChild(cardWrapper);
-
-      
 
      }
     });

@@ -59,14 +59,16 @@
 
     //Search Switch
     $('.search-switch').on('click', function () {
-        $('.search-model').fadeIn(400);
+        $('.search-model').show();
     });
 
-    $('.search-close-switch').on('click', function () {
-        $('.search-model').fadeOut(400, function () {
-            $('#search-input').val('');
-        });
-    });
+    // $('.search-close-switch').on('click', function () {
+    //     $('.search-model').fadeOut(400, function () {
+    //         $('#search-input').val('');
+    //     });
+    // });
+
+  
 
     //
 
@@ -256,58 +258,44 @@
         $(this).addClass('active');
     });
 
-    window.onload = function () {
-        setTimeout(() => {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            console.log("curren user ", currentUser);
-            if (currentUser) {
-                const loginUser = document.getElementById("LoginUser");
-                loginUser.style.display = 'none';
-            }
-            else {
-                const ddProfile = document.getElementById("ddProfile");
-                ddProfile.style.display = 'none';
-            }
-            // For Hot trends
-            // loop through the products array and generate HTML for each product
-            createTrends("Hot Trend", "trend-container", products.slice(0, 3));
-            createTrends("Best Seller", "best-seller-container", products.slice(3, 6));
-            createTrends("Feature", "feature-container", products.slice(6, 9));
-        }, 1000);
-
-        // }, 5000);
-    };
-
-    $(document).ready(function () {
-
-    });
-    function createTrends(head, containerId, products) {
-        let trendsCard = `<div class="section-title"><h4>${head}</h4></div>`;
-        for (var i = 0; i < 3; i++) {
-            var product = products[i];
-            var ratingHtml = '';
-            for (var j = 0; j < product.rating; j++) {
-                ratingHtml += '<i class="fa fa-star"> </i> ';
-            }
-            trendsCard += `<div class="trend__item">
-            <a href="product-details.html?id=${product.id}">
-                <div class="trend__item__pic">
-                    <img widht="90" height="90" src="${product.images[1]}" alt="">
-                    </div>
-                    <div class="trend__item__text">
-                            <h6>${product.name}</h6>
-                            <div class="rating">${ratingHtml}</div>
-                            <div class="product__price">$ ${product.price}</div>
-                            </div>
-                            </div> </a>`;
-        }
-        const hotTrendsContainer = document.querySelector(`#${containerId}`);
-        hotTrendsContainer.innerHTML = trendsCard;
-    }
+   
 
     if (currentUser) {
         const userIcon = $('.user-icon');
         const firstLetter = currentUser.firstName.charAt(0);
         userIcon.text(firstLetter);
     }
+
+    // Get the search input element
+const searchInput = document.getElementById('search-input');
+
+// Add an event listener to the search input element for the 'keypress' event
+searchInput.addEventListener('keypress', function(event) {
+    // Check if the key pressed was the enter key (key code 13)
+    if (event.key == 'Enter') {
+        event.preventDefault();
+
+        // Get the search term entered by the user
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Define an object that maps search terms to their corresponding page IDs
+        const searchPageMap = {
+            'men': 'http://127.0.0.1:5500/products.html?category=men',
+            'women': 'http://127.0.0.1:5500/products.html?category=women',
+            'kids': 'http://127.0.0.1:5500/products.html?category=kids',
+            'cosmetics': 'http://127.0.0.1:5500/products.html?category=cosmetic',
+            'accessories': 'http://127.0.0.1:5500/products.html?category=accessories',
+        };
+
+        const searchModel = document.querySelector('.search-model');
+
+        // Check if the search term entered by the user matches a search term in the searchPageMap object
+        if (searchTerm in searchPageMap) {
+            window.location.href = searchPageMap[searchTerm]
+          } else {
+            console.log('No matching search query found.');
+          }
+    }
+});
+
 })(jQuery);

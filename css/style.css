@@ -3754,3 +3754,39 @@ ol {
   }
   
   
+
+  .review {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review h3 {
+	font-size: 20px;
+	margin-top: 0;
+  }
+  
+  .review p {
+	font-size: 16px;
+	margin-bottom: 10px;
+  }
+  
+  .review .rating {
+	color: orange;
+	font-size: 24px;
+	margin-bottom: 10px;
+  }
+  
+  .review .author {
+	font-style: italic;
+	font-size: 14px;
+  }
+  
+  .review .date {
+	font-size: 14px;
+	color: #666;
+	margin-left: 10px;
+  }
+  
