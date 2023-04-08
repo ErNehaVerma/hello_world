@@ -22,9 +22,6 @@ $(document).ready(function() {
     }
     $('.rating').append(ratingHtml);
 
-
-
-
     // $('.category-banner').css('background-image', 'url(' + target_product.image + ')');
     $('.product__details__text h3').text(target_product.name);
     $('.product__details__price ').text('$'+target_product.price);
@@ -82,11 +79,6 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-  
-
 });
 
 $(document).ready(function () {
@@ -113,8 +105,8 @@ $(document).ready(function () {
             var card = `
                 <div class="product__item">
                     <div class="product__item__pic">
-                        <img class="product__item__pic" src="${product.images[1]}" alt="${product.name}">
-                        <div class="label ${product.label}">${product.labelText}</div>
+                    <a style="text-decoration:none" href="product-details.html?id=${product.id}"><img class="product__item__pic" src="${product.images[1]}" alt="${product.name}"></a>
+                    <div class="label ${product.label}">${product.labelText}</div>
                         <ul class="product__hover">
                             <li>
                                 <a href="${product.images[1]}" class="image-popup">

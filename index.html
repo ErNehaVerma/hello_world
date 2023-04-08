@@ -455,7 +455,7 @@
                     var card = `
                         <div class="product__item">
                             <div class="product__item__pic">
-                                <img class="product__item__pic" src="${product.images[1]}" alt="${product.name}">
+                                <a style="text-decoration:none" href="product-details.html?id=${product.id}"><img class="product__item__pic" src="${product.images[1]}" alt="${product.name}"></a>
                                 <div class="label ${product.label}">${product.labelText}</div>
                                 <ul class="product__hover">
                                     <li>
