@@ -27,18 +27,16 @@ function userMsg()
         // Get the user's message from the input field
         const userData = 
         {
-            user_Name : user_name.value,
+            userName : user_name.value,
             email: user_email.value,
             msg: user_message.value,
         };
-
+        const existingData = JSON.parse(localStorage.getItem('userMessage')) || [];
         existingData.push(userData);
-
         // Convert the user data to a JSON string
         const userDataJSON = JSON.stringify(existingData);
 
         // Save the message to local storage
-
         localStorage.setItem('userMessage', userDataJSON);
         alert('Your message sent successfully..');
         // Clear the input field
