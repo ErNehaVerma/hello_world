@@ -79,7 +79,7 @@ $(document).ready(function () {
     $('.coupn button').click(function (e) {
         e.preventDefault();
         var couponCode = $('.discount__content input').val().toUpperCase();
-        if (couponCode == "BS_DISCOUNT10" || couponCode == "BS_SAVE10") {
+        if (couponCode == "BS_DISCOUNT10" || couponCode == "BS_SAVE10" || couponCode == "SUMMER_SALE_50") {
             alert('Congratulations, your coupon is valid!')
         } else {
             alert("Sorry, that coupon code is not valid.");
@@ -114,16 +114,22 @@ function updateTotal() {
     var discount = 0;
 
     if (couponCode == "BS_DISCOUNT10" || couponCode == "BS_SAVE10") {
-        // Apply 10% discount and free delivery
+        // Apply 10% discount 
         discount = subtotal * 0.1;
-        delivery_fee = 0;
-    } else {
+    } 
+    else if(couponCode == "SUMMER_SALE_50"){
+          // Apply 50% discount 
+          discount = subtotal * 0.5;
+    }
+    else {
         // No discount, add $5 delivery fees
         discount = 0;
-        delivery_fee = 5;
     }
 
     var total = subtotal + tax - discount + delivery_fee;
+    if(subtotal < 100){
+        delivery_fee = 5;
+    }
 
     // Update the subtotal, tax, delivery fee, discount, and total values in the HTML
     $('#subtotal').text('$ ' + subtotal.toFixed(2));
