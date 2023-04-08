@@ -293,7 +293,8 @@ searchInput.addEventListener('keypress', function(event) {
         if (searchTerm in searchPageMap) {
             window.location.href = searchPageMap[searchTerm]
           } else {
-            console.log('No matching search query found.');
+            alert('No matching search query found.');
+            
           }
     }
 });
