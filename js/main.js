@@ -13,15 +13,15 @@
 
         const currentUrl = window.location.href;
         const parts = currentUrl.split('/');
-        const page = './'+parts.pop();
+        const page = './' + parts.pop();
         const menuLinks = document.querySelectorAll('.header__menu a');
         const menuLi = document.querySelectorAll('.header__menu li');
 
 
 
         for (let i = 0; i < menuLinks.length; i++) {
-        const linkUrl = menuLinks[i].getAttribute('href');
-    
+            const linkUrl = menuLinks[i].getAttribute('href');
+
             if (linkUrl == page) {
                 menuLi[i].classList.add('active');
             }
@@ -41,13 +41,13 @@
     });
 
     /*-------------------
-		Load header part for every page
-	--------------------- */
+        Load header part for every page
+    --------------------- */
 
-    $(function(){
+    $(function () {
         $("#included-footer").load("footer.html");
     });
-   
+
 
     /*------------------
         Background Set
@@ -70,10 +70,10 @@
 
     //
 
-    $(function() {
+    $(function () {
         var url = window.location.pathname;
         var activePage = url.substring(url.lastIndexOf('/') + 1);
-        $('ul li a').each(function() {
+        $('ul li a').each(function () {
             var link = $(this).attr('href');
             if (activePage == link) {
                 $(this).closest('li').addClass('active');
@@ -93,8 +93,8 @@
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+        Navigation
+    --------------------*/
     $(".header__menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
@@ -133,36 +133,36 @@
         items: 1,
         dots: false,
         nav: true,
-        navText: ["<i class='arrow_carrot-left'></i>","<i class='arrow_carrot-right'></i>"],
+        navText: ["<i class='arrow_carrot-left'></i>", "<i class='arrow_carrot-right'></i>"],
         smartSpeed: 1200,
         autoHeight: false,
         autoplay: false,
         mouseDrag: false,
         startPosition: 'URLHash'
-    }).on('changed.owl.carousel', function(event) {
+    }).on('changed.owl.carousel', function (event) {
         var indexNum = event.item.index + 1;
         product_thumbs(indexNum);
     });
 
-    function product_thumbs (num) {
+    function product_thumbs(num) {
         var thumbs = document.querySelectorAll('.product__thumb a');
         thumbs.forEach(function (e) {
             e.classList.remove("active");
-            if(e.hash.split("-")[1] == num) {
+            if (e.hash.split("-")[1] == num) {
                 e.classList.add("active");
             }
         })
     }
 
 
-   
+
     $(".nice-scroll").niceScroll({
-        cursorborder:"",
-        cursorcolor:"#dddddd",
-        boxzoom:false,
+        cursorborder: "",
+        cursorcolor: "#dddddd",
+        boxzoom: false,
         cursorwidth: 5,
         background: 'rgba(0, 0, 0, 0.2)',
-        cursorborderradius:50,
+        cursorborderradius: 50,
         horizrailenabled: false
     });
 
@@ -175,7 +175,7 @@
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
-    if(mm == 12) {
+    if (mm == 12) {
         mm = '01';
         yyyy = yyyy + 1;
     } else {
@@ -190,74 +190,74 @@
 
     /* var timerdate = "2020/12/30" */
 
-	$("#countdown-time").countdown(timerdate, function(event) {
+    $("#countdown-time").countdown(timerdate, function (event) {
         $(this).html(event.strftime("<div class='countdown__item'><span>%D</span> <p>Day</p> </div>" + "<div class='countdown__item'><span>%H</span> <p>Hour</p> </div>" + "<div class='countdown__item'><span>%M</span> <p>Min</p> </div>" + "<div class='countdown__item'><span>%S</span> <p>Sec</p> </div>"));
     });
 
     /*-------------------
-		Range Slider
-	--------------------- */
-	var rangeSlider = $(".price-range"),
-    minamount = $("#minamount"),
-    maxamount = $("#maxamount"),
-    minPrice = rangeSlider.data('min'),
-    maxPrice = rangeSlider.data('max');
+        Range Slider
+    --------------------- */
+    var rangeSlider = $(".price-range"),
+        minamount = $("#minamount"),
+        maxamount = $("#maxamount"),
+        minPrice = rangeSlider.data('min'),
+        maxPrice = rangeSlider.data('max');
     rangeSlider.slider({
-    range: true,
-    min: minPrice,
-    max: maxPrice,
-    values: [minPrice, maxPrice],
-    slide: function (event, ui) {
-        minamount.val('$' + ui.values[0]);
-        maxamount.val('$' + ui.values[1]);
+        range: true,
+        min: minPrice,
+        max: maxPrice,
+        values: [minPrice, maxPrice],
+        slide: function (event, ui) {
+            minamount.val('$' + ui.values[0]);
+            maxamount.val('$' + ui.values[1]);
         }
     });
     minamount.val('$' + rangeSlider.slider("values", 0));
     maxamount.val('$' + rangeSlider.slider("values", 1));
 
     /*------------------
-		Single Product
-	--------------------*/
-	$('.product__thumb .pt').on('click', function(){
-		var imgurl = $(this).data('imgbigurl');
-		var bigImg = $('.product__big__img').attr('src');
-		if(imgurl != bigImg) {
-			$('.product__big__img').attr({src: imgurl});
-		}
+        Single Product
+    --------------------*/
+    $('.product__thumb .pt').on('click', function () {
+        var imgurl = $(this).data('imgbigurl');
+        var bigImg = $('.product__big__img').attr('src');
+        if (imgurl != bigImg) {
+            $('.product__big__img').attr({ src: imgurl });
+        }
     });
-    
+
     /*-------------------
-		Quantity change
-	--------------------- */
+        Quantity change
+    --------------------- */
     var proQty = $('.pro-qty');
-	proQty.prepend('<span class="dec qtybtn">-</span>');
-	proQty.append('<span class="inc qtybtn">+</span>');
-	proQty.on('click', '.qtybtn', function () {
-		var $button = $(this);
-		var oldValue = $button.parent().find('input').val();
-		if ($button.hasClass('inc')) {
-			var newVal = parseFloat(oldValue) + 1;
-		} else {
-			// Don't allow decrementing below zero
-			if (oldValue > 0) {
-				var newVal = parseFloat(oldValue) - 1;
-			} else {
-				newVal = 0;
-			}
-		}
-		$button.parent().find('input').val(newVal);
+    proQty.prepend('<span class="dec qtybtn">-</span>');
+    proQty.append('<span class="inc qtybtn">+</span>');
+    proQty.on('click', '.qtybtn', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 0;
+            }
+        }
+        $button.parent().find('input').val(newVal);
     });
-    
+
     /*-------------------
-		Radio Btn
-	--------------------- */
+        Radio Btn
+    --------------------- */
     $(".size__btn label").on('click', function () {
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');
     });
 
     window.onload = function () {
-        setTimeout(()=>{
+        setTimeout(() => {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             console.log("curren user ", currentUser);
             if (currentUser) {
@@ -268,18 +268,46 @@
                 const ddProfile = document.getElementById("ddProfile");
                 ddProfile.style.display = 'none';
             }
-        }, 1000)
+            // For Hot trends
+            // loop through the products array and generate HTML for each product
+            createTrends("Hot Trend", "trend-container", products.slice(0, 3));
+            createTrends("Best Seller", "best-seller-container", products.slice(3, 6));
+            createTrends("Feature", "feature-container", products.slice(6, 9));
+        }, 1000);
+
+        // }, 5000);
     };
 
-    $(document).ready(function() {
-        
-      });
-      
+    $(document).ready(function () {
 
-      if(currentUser){
+    });
+    function createTrends(head, containerId, products) {
+        let trendsCard = `<div class="section-title"><h4>${head}</h4></div>`;
+        for (var i = 0; i < 3; i++) {
+            var product = products[i];
+            var ratingHtml = '';
+            for (var j = 0; j < product.rating; j++) {
+                ratingHtml += '<i class="fa fa-star"> </i> ';
+            }
+            trendsCard += `<div class="trend__item">
+            <a href="product-details.html?id=${product.id}">
+                <div class="trend__item__pic">
+                    <img widht="90" height="90" src="${product.images[1]}" alt="">
+                    </div>
+                    <div class="trend__item__text">
+                            <h6>${product.name}</h6>
+                            <div class="rating">${ratingHtml}</div>
+                            <div class="product__price">$ ${product.price}</div>
+                            </div>
+                            </div> </a>`;
+        }
+        const hotTrendsContainer = document.querySelector(`#${containerId}`);
+        hotTrendsContainer.innerHTML = trendsCard;
+    }
+
+    if (currentUser) {
         const userIcon = $('.user-icon');
         const firstLetter = currentUser.firstName.charAt(0);
         userIcon.text(firstLetter);
-      }
-      
+    }
 })(jQuery);
