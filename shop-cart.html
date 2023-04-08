@@ -145,8 +145,8 @@
     <!-- Breadcrumb End -->
 
     <!-- Shop Cart Section Begin -->
-    <section class="shop-cart spad">
-        <div class="container">
+    <section class="shop-cart spad" >
+        <div class="container" id="is_cart">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shop__cart__table">
@@ -198,6 +198,26 @@
                 </div>
             </div>
         </div>
+        
+        <div class="container" id="not_cart">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h3>YOUR CART IS EMPTY</h3><br><br>
+                    <h5> Add items that you like to your cart. Review them anytime and easily move them to the bag.
+                    </h5>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <div class="wishlist__procced text-center">
+                        <a class="primary-btn col-md-3 mx-auto" href="./index.html">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </section>
     <!-- Shop Cart Section End -->
 
@@ -361,6 +381,18 @@
     <script src="js/login-register.js"></script>
     <script src="js/products.js"></script>
     <script src="js/shop-cart.js"></script>
+    <script src="js/indx.js"></script>
+    <script>
+         $(document).ready(function () {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const cart = currentUser.cart;
+            if (cart.length) {
+                $("#not_cart").addClass("d-none");
+            }
+            else $("#is_cart").addClass("d-none");
+            console.log("cart ", cart);
+        });
+    </script>
 </body>
 
 </html>
