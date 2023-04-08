@@ -11,7 +11,6 @@ function addToWishList(productToAdd, type) {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const userData = JSON.parse(localStorage.getItem('userData'));
 
-
   // Getting item index
   if (type == 'wishlist') {
     const itemIndex = currentUser.wishList.findIndex(product => product.id === item.id);
@@ -22,8 +21,8 @@ function addToWishList(productToAdd, type) {
     }
     else {
       currentUser.wishList = [...currentUser.wishList, item];
+      alert("Successfully added to Wishlist");
     }
-    alert("Successfully added to Wishlist");
   }
   else {
     const itemIndex = currentUser.cart.findIndex(product => product.id === item.id);
