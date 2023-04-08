@@ -32,10 +32,13 @@ function userMsg()
             msg: user_message.value,
         };
 
+        existingData.push(userData);
+
         // Convert the user data to a JSON string
-        const userDataJSON = JSON.stringify(userData);
+        const userDataJSON = JSON.stringify(existingData);
 
         // Save the message to local storage
+
         localStorage.setItem('userMessage', userDataJSON);
         alert('Your message sent successfully..');
         // Clear the input field
