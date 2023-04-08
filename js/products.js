@@ -518,7 +518,7 @@ var products = [
     },
     {    
         "id":30,
-        "name": "6 Matte Lipstick with 6 Lipliners Durable Lip Gloss Long-Lasting Non-Stick Cup Not Fade Waterproof High Pigmented Velvet Lipgloss Kit Beauty Cosmetics Makeup Gift for Girls(12PCS)",    
+        "name": "6 Matte Lipstick with 6 Lipliners Durable Lip Gloss Waterproof High Pigmented Velvet Lipgloss Kit Beauty Cosmetics Makeup Gift for Girls(12PCS)",    
         "price": 10.70,    
         "description": "This is a Langmanni brand liquid lipstick in the color red. It has a matte finish and is designed to be long-lasting, moisturizing, and waterproof. The product comes in a tube package and is suitable for all skin tones, targeting girls as the intended audience. This kit contains 6 matte lipsticks and 6 corresponding lipliners in nude shades. The lipstick formula includes moisturizing ingredients to keep lips feeling relaxed, emollient and silky without drying them out. It's long-lasting, non-sticky, and won't fade when touched or exposed to water, making it kiss-proof and able to stay on for up to 12 hours. The kit comes in a gift box, making it a great choice for occasions such as Halloween, Christmas, Valentine's Day, birthdays, weddings, dance parties, cosmetic shows, and graduations. The lipsticks come in beautiful colors and have an interesting appearance.",
         "category":"cosmetic",
