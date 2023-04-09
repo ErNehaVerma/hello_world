@@ -485,7 +485,7 @@
     <script src="js/main.js"></script>
     <script src="js/login-register.js"></script>   
     <script src="js/products.js"></script>
-    <!-- <script src="js/indx.js"></script> -->
+    <script src="js/indx.js"></script>
     <script src="js/wishlist.js"></script>
 
     <script>
@@ -513,8 +513,6 @@
          var container = document.querySelector('#property__gallery');
             var productRecords = []
             products.forEach(element => {
-                console.log(cat, element.category);
-
                 if(element.category == cat){
                     productRecords.push(element);
                 }

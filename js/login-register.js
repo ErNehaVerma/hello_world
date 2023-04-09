@@ -136,10 +136,8 @@ function formvalidationLoginPage(event) {
         // Get saved login data from local storage
         const savedData = JSON.parse(localStorage.getItem('userData'));
         const userExists = savedData.filter(user => user.email === inputEmail && user.password === inputPassword);
-        console.log(userExists)
         // Check if login was successful
         if (userExists.length) {
-            console.log("Login User ", document.getElementById('LoginUser'));
             localStorage.setItem("currentUser", JSON.stringify(userExists[0]))
             alert("Successfully login ...");
         } else {
@@ -151,7 +149,6 @@ function formvalidationLoginPage(event) {
     }
 
     // Removing login/register after login
-    console.log("Login User ", document.getElementById('LoginUser'));
     // currentUser && currentUser.length ? document.getElementById('LoginUser').style.display = 'none' : null;
 
 

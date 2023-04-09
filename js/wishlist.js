@@ -1,10 +1,9 @@
 function addToWishList(productToAdd, type) {
   if(!window.currentUser){
-    console.log("Kindly login to add item into "+type);
+    alert("Kindly login to add item into "+type);
     window.location.href="./login.html";
     return;
   }
-  console.log("here in add to list ", productToAdd, " type ", type);
   // Item to add
   const item = JSON.parse(decodeURI(productToAdd));
   // Getting currentUser from local Storage

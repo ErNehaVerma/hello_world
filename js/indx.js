@@ -1,12 +1,10 @@
 window.onload = function () {
     setTimeout(() => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log("curren user ", currentUser);
         if (currentUser) {
             const loginUser = document.getElementById("LoginUser");
             loginUser.style.display = 'none';
             const wishListTip = document.querySelectorAll("div#wishListTip");
-            console.log("wishList ", wishListTip)
             for (let i = 0; i < wishListTip.length; i++) {
                 if (!currentUser.wishList.length)
                     wishListTip[i].style.display = 'none';
@@ -24,6 +22,16 @@ window.onload = function () {
         else {
             const ddProfile = document.getElementById("ddProfile");
             ddProfile.style.display = 'none';
+
+            const cartTip = document.querySelectorAll("div#cartTip");
+            for (let i = 0; i < cartTip.length; i++) {
+                cartTip[i].style.display = 'none';
+            }
+
+            const wishListTip = document.querySelectorAll("div#wishListTip");
+            for (let i = 0; i < wishListTip.length; i++) {
+                wishListTip[i].style.display = 'none';
+            }
         }
         // For Hot trends
         // loop through the products array and generate HTML for each product
@@ -58,8 +66,13 @@ function createTrends(head, containerId, products) {
                         </div>
                         </div> </a>`;
     }
-    const hotTrendsContainer = document.querySelector(`#${containerId}`);
-    hotTrendsContainer.innerHTML = trendsCard;
+    const currentUrl = window.location.href;
+    const parts = currentUrl.split('/');
+    const page = './' + parts.pop();
+    if(page == './index.html'){
+        const hotTrendsContainer = document.querySelector(`#${containerId}`);
+        hotTrendsContainer.innerHTML = trendsCard;
+    }
 }
 
 

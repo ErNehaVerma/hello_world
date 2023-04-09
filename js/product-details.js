@@ -10,8 +10,6 @@ $(document).ready(function() {
             target_product = element;
         }
     });
-    // console.log(target_product)
-
     $('.breadcrumb__links a.brdcrm_2')
     .text(target_product.category).attr('href', 'products.html?category='+target_product.category);
     $('.breadcrumb__links span').text(target_product.name);
@@ -47,8 +45,6 @@ $(document).ready(function() {
         const userData = JSON.parse(localStorage.getItem('userData'));
         var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
         var filteredUserData = userData[i];
-
-        console.log(filteredUserData)
 
 
         //  an object to store the cart data
@@ -149,7 +145,6 @@ $(document).ready(function () {
         e.preventDefault();
         var imgSrc = $(this).attr('href');
 
-        console.log(this)
         // Create the popup HTML with the image
         var popupHtml = '<div class="popup"><img width="500px" src="' + imgSrc + '"></div>';
 

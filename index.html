@@ -473,25 +473,6 @@
     <script src="js/indx.js"></script>
 
     <script>
-        //         window.onload = function () {
-        //     setTimeout(() => {
-        //         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-        //         if (currentUser) {
-
-        //             const wishListTip=document.querySelector("div#wishListTip");
-        //             console.log(wishListTip.style.display);
-        //             if(!currentUser.wishList.length)
-        //                 wishListTip.style.display = 'none';
-        //         }
-        //         else {
-
-        //         }
-        //     }, 1000);
-        // };
-
-
-
         $(document).ready(function () {
             // get reference to the container
 
@@ -554,8 +535,6 @@
                 // Get the image source
                 e.preventDefault();
                 var imgSrc = $(this).attr('href');
-
-                console.log(this)
                 // Create the popup HTML with the image
                 var popupHtml = '<div class="popup"><img width="500px" src="' + imgSrc + '"></div>';
 

@@ -1,1 +1,1 @@
-Be stylish is a e-commerce website made with students as a college project
+Be stylish is a e-commerce website made by college students as a term project.
