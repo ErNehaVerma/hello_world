@@ -141,8 +141,10 @@ function formvalidationLoginPage(event) {
             localStorage.setItem("currentUser", JSON.stringify(userExists[0]))
             alert("Successfully login ...");
         } else {
-            // Incorrect login credentials
-            alert("Account does not exist...Please sign up...");
+            if (savedData.some(user => user.email === inputEmail))
+            alert('Invalid credentials...Please try again...');
+            else
+            alert("Account does not exist...Please sign up...");// Incorrect login credentials
             event.preventDefault();
             return;
         }
