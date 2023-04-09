@@ -5,17 +5,34 @@ window.onload = function () {
         if (currentUser) {
             const loginUser = document.getElementById("LoginUser");
             loginUser.style.display = 'none';
-        }
+            const wishListTip = document.querySelectorAll("div#wishListTip");
+            console.log("wishList ", wishListTip)
+            for (let i = 0; i < wishListTip.length; i++) {
+                if (!currentUser.wishList.length)
+                    wishListTip[i].style.display = 'none';
+                else
+                    wishListTip[i].innerHTML = currentUser.wishList.length
+            }
+            const cartTip = document.querySelectorAll("div#cartTip");
+            for (let i = 0; i < cartTip.length; i++) {
+                if (!currentUser.cart.length)
+                    cartTip[i].style.display = 'none';
+                else
+                    cartTip[i].innerHTML = currentUser.cart.length
+            }
+          }
         else {
             const ddProfile = document.getElementById("ddProfile");
             ddProfile.style.display = 'none';
         }
         // For Hot trends
         // loop through the products array and generate HTML for each product
-        createTrends("Hot Trend", "trend-container", products.slice(0, 3));
-        createTrends("Best Seller", "best-seller-container", products.slice(3, 6));
-        createTrends("Feature", "feature-container", products.slice(6, 9));
-    }, 1000);
+        if (products) {
+            createTrends("Hot Trend", "trend-container", products.slice(0, 3));
+            createTrends("Best Seller", "best-seller-container", products.slice(3, 6));
+            createTrends("Feature", "feature-container", products.slice(6, 9));
+        }
+    }, 100);
 
     // }, 5000);
 };

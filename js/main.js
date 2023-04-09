@@ -266,18 +266,6 @@
         userIcon.text(firstLetter);
     }
 
-    var wish_tip = $('.header__right__widget .icon_heart_alt');
-    var hasWishlist = currentUser;
-
-    if (hasWishlist) {
-        console.log(hasWishlist.wishList.length);
-    wish_tip.append('<div class="tip"></div>');
-   
-    } else {
-    // remove the #wishListTip element if wishlist is not present
-    wish_tip.find('#wishListTip').remove();
-    }
-
 
     // Get the search input element
 const searchInput = document.getElementById('search-input');
