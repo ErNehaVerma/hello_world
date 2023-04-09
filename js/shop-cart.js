@@ -31,7 +31,7 @@ $(document).ready(function () {
                             </div>
                         </td>
                         <td class="cart__total">$ ${ final_price}</td>
-                        <td class="cart__close"><span onclick="removeItem('${index}')" class="icon_close"></span>
+                        <td class="cart__close"><span onclick="removeCartItem('${index}')" class="icon_close"></span>
                     </td>
                 </tr>`;
 
@@ -89,14 +89,22 @@ $(document).ready(function () {
 });
 
 // function to remove an item from the cart
-function removeItem(i) {
+function removeCartItem(i) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    var filteredUserData = userData[i]['cart'];
-    filteredUserData.splice(i, 1);
-    localStorage.setItem('userData', JSON.stringify(userData));
     currentUser.cart.splice(i,1);
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    var index = userData.findIndex((user) => user.user_id === currentUser.user_id);
+    var filteredUserData = userData[index]['cart'];
+    filteredUserData.splice(i, 1);
+    userData.map(user=> {
+        if(user.user_id === currentUser.user_id){
+            return currentUser;
+        }
+        return user;
+    })
+    console.log("new user data ", userData)
+    localStorage.setItem('userData', JSON.stringify(userData));
     // Call the updateTotal function
     location.reload();
 }
