@@ -142,7 +142,7 @@ function formvalidationLoginPage(event) {
             alert("Successfully login ...");
         } else {
             // Incorrect login credentials
-            alert("Account does not exist...");
+            alert("Account does not exist...Please sign up...");
             event.preventDefault();
             return;
         }
