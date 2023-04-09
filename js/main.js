@@ -312,3 +312,15 @@ searchInput.addEventListener('keypress', function(event) {
 });
 
 })(jQuery);
+
+function subscribe()
+{
+    const email = document.getElementById('mail_id').value;
+    // const cleanEmail = email.replace(/@gmail.com/g, "");
+    // Remove the @gmail.com
+    const username = email.replace('@gmail.com', '');
+
+    // Capitalize the first letter of the username
+    const capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+    alert(capitalizedUsername+' you have successfully subscribed to Be Stylish.');
+}
