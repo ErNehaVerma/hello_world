@@ -387,8 +387,11 @@
     <script>
          $(document).ready(function () {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const cart = currentUser.cart;
-            if (cart.length) {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
+        var filteredUserData = userData[i];
+        var cartData = filteredUserData['cart'];
+            if (cartData.length) {
                 $("#not_cart").addClass("d-none");
             }
             else $("#is_cart").addClass("d-none");
