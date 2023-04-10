@@ -96,10 +96,10 @@
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
                             <li><a href="./wishlist.html"><span class="icon_heart_alt"></span>
-                                    <div id="wishListTip" class="tip"></div>
+                                    <!-- <div id="wishListTip" class="tip"></div> -->
                                 </a></li>
                             <li><a href="./shop-cart.html"><span class="icon_bag_alt"></span>
-                                    <div id="cartTip" class="tip"></div>
+                                    <!-- <div id="cartTip" class="tip"></div> -->
                                 </a></li>
                             <li id="ddProfile" onclick="displayName()">
                                 <div class="dropdown">
@@ -358,6 +358,12 @@
     <script>
         $(document).ready(function () {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            console.log(currentUser);
+            if(!currentUser){
+                $("#is_wishlist").addClass("d-none");
+                return
+            }
+
             const wishList = currentUser.wishList;
             if (wishList.length) {
                 $("#not_wishlist").addClass("d-none");

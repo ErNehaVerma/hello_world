@@ -121,20 +121,31 @@ function formvalidationLoginPage(event) {
     email.setCustomValidity('');
     password.setCustomValidity('');
 
-    if (email.value == " ") {
+    if (email.value == "") {
         email.setCustomValidity('Please enter your email.');
+        return
     }
 
-    if (password.value == " ") {
+    if (password.value == "") {
         password.setCustomValidity('Please enter your Password.');
+        return
+
     }
     else {
         // Get login input values
-        const inputEmail = document.getElementById('email').value;
-        const inputPassword = document.getElementById('password').value;
+        const inputEmail = email.value;
+        const inputPassword = password.value;
 
         // Get saved login data from local storage
         const savedData = JSON.parse(localStorage.getItem('userData'));
+        if (!savedData){
+            setTimeout(() => {
+                window.location.reload()
+            }, 500);
+            alert("Account does not exist...Please sign up...");// Incorrect login credentials
+            return
+        }
+
         const userExists = savedData.filter(user => user.email === inputEmail && user.password === inputPassword);
         // Check if login was successful
         if (userExists.length) {

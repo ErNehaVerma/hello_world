@@ -42,31 +42,30 @@ $(document).ready(function() {
         var quantity = $('.pro-qty input').val();
 
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if(currentUser){
+
         const userData = JSON.parse(localStorage.getItem('userData'));
         var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
         var filteredUserData = userData[i];
+        var cartData = filteredUserData['cart'];
 
 
         //  an object to store the cart data
-        if(currentUser){
             var cart_data = {
                 'product_id': product_id,
                 'quantity': quantity
-            };
-
-
-            const itemIndex = filteredUserData.cart.findIndex(product => product.id === product_id);
-
+            };            
+    
+            const itemIndex = cartData.findIndex(cart => cart.product_id == product_id);
             // if item exists then delete the indexs
            if (itemIndex > -1) {
-                cart_data.quantity = parseInt(cart_data.quantity) + parseInt(filteredUserData[itemIndex].quantity);
+                cartData[itemToUpdateIndex].quantity += parseInt(quantity);
            }
            else {
-                filteredUserData.cart = [...filteredUserData.cart, cart_data];
+                cartData.cart = [...cartData.cart, cart_data];
            }
 
            localStorage.setItem("userData", JSON.stringify(userData));
-
             alert('Item added successfully into the cart!!')
             window.location.href = 'shop-cart.html';
         }else{

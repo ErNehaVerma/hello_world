@@ -1,6 +1,12 @@
 $(document).ready(function () {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const userData = JSON.parse(localStorage.getItem('userData'));
+
+    console.log(userData)
+    if(!currentUser){
+        return
+    }
+        
     var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
     var filteredUserData = userData[i];
     var cartData = filteredUserData['cart'];
@@ -51,6 +57,7 @@ $(document).ready(function () {
             var newVal = parseFloat(oldValue) - 1;
             newVal = Math.max(newVal, 0);
         }
+        // cartData.quantity = newVal;
         $button.parent().find('input').val(newVal);
         // get the product ID and update the quantity in the cartData array
         var productId = $button.parent().find('input').attr('id');
@@ -61,9 +68,8 @@ $(document).ready(function () {
             cartItem.quantity = newVal;
         }
         var price = products.filter((product) => parseInt(product.id) == parseInt(productId))[0].price;
-
         // // update the cartData in the localStorage
-        // localStorage.setItem('cart', JSON.stringify(cartData));
+        localStorage.setItem('userData', JSON.stringify(userData));
 
        
 
@@ -91,6 +97,8 @@ $(document).ready(function () {
 // function to remove an item from the cart
 function removeCartItem(i) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!currentUser)
+        return
     currentUser.cart.splice(i,1);
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -103,7 +111,6 @@ function removeCartItem(i) {
         }
         return user;
     })
-    console.log("new user data ", userData)
     localStorage.setItem('userData', JSON.stringify(userData));
     // Call the updateTotal function
     location.reload();

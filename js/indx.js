@@ -1,6 +1,19 @@
 window.onload = function () {
     setTimeout(() => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if(!currentUser){
+            $("div#wishListTip").hide();
+            $("div#cartTip").hide();
+            $("#ddProfile").hide();
+
+            
+            return
+        }
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
+        var cartData = userData[i];
+
         if (currentUser) {
             const loginUser = document.getElementById("LoginUser");
             loginUser.style.display = 'none';
@@ -13,10 +26,10 @@ window.onload = function () {
             }
             const cartTip = document.querySelectorAll("div#cartTip");
             for (let i = 0; i < cartTip.length; i++) {
-                if (!currentUser.cart.length)
+                if (!cartData.cart.length)
                     cartTip[i].style.display = 'none';
                 else
-                    cartTip[i].innerHTML = currentUser.cart.length
+                    cartTip[i].innerHTML = cartData.cart.length
             }
           }
         else {
@@ -69,7 +82,7 @@ function createTrends(head, containerId, products) {
     const currentUrl = window.location.href;
     const parts = currentUrl.split('/');
     const page = './' + parts.pop();
-    if(page == './index.html'){
+    if(page == './index.html' || page == './index.html?'){
         const hotTrendsContainer = document.querySelector(`#${containerId}`);
         hotTrendsContainer.innerHTML = trendsCard;
     }
