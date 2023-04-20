@@ -4,6 +4,7 @@
 (function ($) {
     window.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
+
     /*------------------
         Preloader
     --------------------*/
@@ -40,6 +41,8 @@
         }
     });
 
+
+
     /*-------------------
         Load header part for every page
     --------------------- */
@@ -47,6 +50,8 @@
     $(function () {
         $("#included-footer").load("footer.html");
     });
+
+    
 
 
     /*------------------

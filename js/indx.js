@@ -6,6 +6,7 @@ window.onload = function () {
             $("div#wishListTip").hide();
             $("div#cartTip").hide();
             $("#ddProfile").hide();
+            $("#logout_icon").hide();
 
             
             return
@@ -17,6 +18,8 @@ window.onload = function () {
         if (currentUser) {
             const loginUser = document.getElementById("LoginUser");
             loginUser.style.display = 'none';
+            $("#logout_icon").show();
+
             const wishListTip = document.querySelectorAll("div#wishListTip");
             for (let i = 0; i < wishListTip.length; i++) {
                 if (!currentUser.wishList.length)
@@ -35,6 +38,8 @@ window.onload = function () {
         else {
             const ddProfile = document.getElementById("ddProfile");
             ddProfile.style.display = 'none';
+
+            $("#logout_icon").hide();
 
             const cartTip = document.querySelectorAll("div#cartTip");
             for (let i = 0; i < cartTip.length; i++) {

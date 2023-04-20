@@ -33,29 +33,38 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__close">+</div>
-        <ul class="offcanvas__widget">
-            <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-        </ul>
-        <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logos/3.png" alt=""></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__auth">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
+   <!-- Offcanvas Menu Begin -->
+   <div class="offcanvas-menu-overlay"></div>
+   <div class="offcanvas-menu-wrapper">
+       <div class="offcanvas__close">+</div>
+       <ul class="offcanvas__widget">
+           <li><span class="icon_search search-switch"></span></li>
+           <li>
+               <a href="./wishlist.html"><span class="icon_heart_alt"></span>
+                   <div id="wishListTip" class="tip"></div>
+               </a></li>
+           <li>
+               <a href="./shop-cart.html"><span class="icon_bag_alt"></span>
+                   <div id="cartTip" class="tip"></div>
+               </a>
+           </li>
+           <li id="logout_icon" onclick="logout()">
+               <i id="ddLogout" class="fa fa-sign-out fa-2x" ></i>
+           </li>
+
+       </ul>
+       <!-- <div class="offcanvas__logo">
+           <a href="./index.html"><img src="img/logos/3.png" alt=""></a>
+       </div> -->
+       <div id="mobile-menu-wrap"></div>
+       <div id="LoginUser" class="offcanvas__auth">
+           <a href="./login.html">Login</a>
+           <a href="./register.html">Register</a>
+       </div>
+
+       
+   </div>
+   <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
      <header class="header">
@@ -493,6 +502,8 @@
         var urlParams = new URLSearchParams(queryString);
         var cat = urlParams.get('category');
 
+      
+
     
         $(document).ready(function() {
             var categoryRecord = {};
@@ -531,8 +542,10 @@
          // create the HTML for the product card 
         var card = `
                         <div class="product__item">
-                            <div class="product__item__pic">
+                            <div class="product__item__pic ">
+                                <a href="product-details.html?id=${product.id}">
                                 <img class="product__item__pic" src="${product.images[1]}" alt="${product.name}">
+                                </a>
                                 <div class="label ${product.label}">${product.labelText}</div>
                                 <ul class="product__hover">
                                     <li>
@@ -571,6 +584,35 @@
        container.appendChild(cardWrapper);
 
      }
+
+     $('.image-popup').on('click', function (e) {
+                // Get the image source
+                e.preventDefault();
+                var imgSrc = $(this).attr('href');
+                // Create the popup HTML with the image
+                var popupHtml = '<div class="popup"><span class="close-btn">&#10005;</span><img width="500px" src="' + imgSrc + '"></div>';
+
+                // Add the popup HTML to the body
+                $('body').append(popupHtml);
+
+                // Fade in the background overlay
+                $('body').append('<div class="popup-overlay"></div>');
+                $('.popup-overlay').fadeIn();
+
+                // Fade in the popup
+                $('.popup').fadeIn();
+            });
+
+            $('body').on('click', '.close-btn', function () {
+                $('.popup, .popup-overlay').fadeOut(function () {
+                    $(this).remove();
+                });
+            });
+
+            // $('.close-btn').on('click', function() {
+            //     $('.popup, .popup-overlay').fadeOut(function () {
+            //         $(this).remove();
+            //     });            });
     });
 
          

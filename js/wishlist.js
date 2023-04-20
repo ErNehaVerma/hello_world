@@ -5,7 +5,19 @@ function addToWishList(productToAdd, type) {
     return;
   }
   // Item to add
-  const item = JSON.parse(decodeURI(productToAdd));
+  if(productToAdd == 0){
+      var id = urlParams.get('id');
+      products.forEach(element => {
+        if(element.id == id){
+          var item = element;
+        }
+
+      });
+
+
+  }{
+    var item = JSON.parse(decodeURI(productToAdd));
+  }
   // Getting currentUser from local Storage
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const userData = JSON.parse(localStorage.getItem('userData'));

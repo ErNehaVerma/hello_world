@@ -40,21 +40,30 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="./wishlist.html"><span class="icon_heart_alt"></span>
-                    <!-- <div class="tip"></div> -->
+            <li>
+                <a href="./wishlist.html"><span class="icon_heart_alt"></span>
+                    <div id="wishListTip" class="tip"></div>
                 </a></li>
-            <li><a href="./shop-cart.html"><span class="icon_bag_alt"></span>
-                    <div class="tip">2</div>
-                </a></li>
+            <li>
+                <a href="./shop-cart.html"><span class="icon_bag_alt"></span>
+                    <div id="cartTip" class="tip"></div>
+                </a>
+            </li>
+            <li id="logout_icon" onclick="logout()">
+                <i id="ddLogout" class="fa fa-sign-out fa-2x" ></i>
+            </li>
+
         </ul>
-        <div class="offcanvas__logo">
+        <!-- <div class="offcanvas__logo">
             <a href="./index.html"><img src="img/logos/3.png" alt=""></a>
-        </div>
+        </div> -->
         <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__auth">
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+        <div id="LoginUser" class="offcanvas__auth">
+            <a href="./login.html">Login</a>
+            <a href="./register.html">Register</a>
         </div>
+
+        
     </div>
     <!-- Offcanvas Menu End -->
 
@@ -76,16 +85,6 @@
                             <li><a href="./products.html?category=kids">Kid’s</a></li>
                             <li><a href="./products.html?category=cosmetic">Cosmetic</a></li>
                             <li><a href="./products.html?category=accessories">Accessories</a></li>
-                            <!-- <li><a href="./shop.html">Shop</a></li> -->
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                            <!-- <li><a href="./blog.html">Blog</a></li> -->
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -98,12 +97,15 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./wishlist.html"><span class="icon_heart_alt"></span>
+                            <li>
+                                <a href="./wishlist.html"><span class="icon_heart_alt"></span>
                                     <div id="wishListTip" class="tip"></div>
                                 </a></li>
-                            <li><a href="./shop-cart.html"><span class="icon_bag_alt"></span>
+                            <li>
+                                <a href="./shop-cart.html"><span class="icon_bag_alt"></span>
                                     <div id="cartTip" class="tip"></div>
-                                </a></li>
+                                </a>
+                            </li>
                             <li id="ddProfile" onclick="displayName()">
                                 <div class="dropdown">
                                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -216,6 +218,7 @@
         </div>
     </section>
     <!-- Product Section End -->
+    
 
     <!-- Banner Section Begin -->
     <section class="banner set-bg" data-setbg="img/banner/2.jpg">
@@ -492,8 +495,8 @@
                     // create the HTML for the product card
                     var card = `
                         <div class="product__item">
-                            <div class="product__item__pic">
-                                <a style="text-decoration:none" href="product-details.html?id=${product.id}"><img class="product__item__pic" src="${product.images[1]}" alt="${product.name}"></a>
+                            <div class="product__item__pic ">
+                                <a class="col-sm-12" style="text-decoration:none" href="product-details.html?id=${product.id}"><img class="product__item__pic" src="${product.images[1]}" alt="${product.name}"></a>
                                 <div class="label ${product.label}">${product.labelText}</div>
                                 <ul class="product__hover">
                                     <li>
@@ -537,7 +540,7 @@
                 e.preventDefault();
                 var imgSrc = $(this).attr('href');
                 // Create the popup HTML with the image
-                var popupHtml = '<div class="popup"><img width="500px" src="' + imgSrc + '"></div>';
+                var popupHtml = '<div class="popup"><span class="close-btn">&#10005;</span><img width="500px" src="' + imgSrc + '"></div>';
 
                 // Add the popup HTML to the body
                 $('body').append(popupHtml);
@@ -551,7 +554,7 @@
             });
 
             // Hide the popup and overlay when clicked
-            $('body').on('click', '.popup, .popup-overlay', function () {
+            $('body').on('click', '.close-btn', function () {
                 $('.popup, .popup-overlay').fadeOut(function () {
                     $(this).remove();
                 });

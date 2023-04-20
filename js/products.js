@@ -285,6 +285,8 @@ var products = [
             1 : "img/product/accessories/watch-1.png",
             2 : "img/product/accessories/watch-2.png",
             3 : "img/product/accessories/watch-3.png",
+            4 : "img/product/accessories/watch-2.png",
+
         }
     },
     {    
