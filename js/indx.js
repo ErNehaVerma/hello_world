@@ -7,8 +7,6 @@ window.onload = function () {
             $("div#cartTip").hide();
             $("#ddProfile").hide();
             $("#logout_icon").hide();
-
-            
             return
         }
         const userData = JSON.parse(localStorage.getItem('userData'));
@@ -16,8 +14,13 @@ window.onload = function () {
         var cartData = userData[i];
 
         if (currentUser) {
+            // $("#LoginUser").hide();
             const loginUser = document.getElementById("LoginUser");
             loginUser.style.display = 'none';
+
+            const loginUser_can = document.getElementById("LoginUser_can");
+            loginUser_can.style.display = 'none';
+            
             $("#logout_icon").show();
 
             const wishListTip = document.querySelectorAll("div#wishListTip");
@@ -91,6 +94,7 @@ function createTrends(head, containerId, products) {
         const hotTrendsContainer = document.querySelector(`#${containerId}`);
         hotTrendsContainer.innerHTML = trendsCard;
     }
+    
 }
 
 

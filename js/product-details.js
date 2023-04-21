@@ -40,38 +40,46 @@ $(document).ready(function() {
         // Get the product ID and quantity from the form
         var product_id = target_product.id;
         var quantity = $('.pro-qty input').val();
-
+        
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if(currentUser){
-
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
-        var filteredUserData = userData[i];
-        var cartData = filteredUserData['cart'];
-
-
-        //  an object to store the cart data
-            var cart_data = {
-                'product_id': product_id,
-                'quantity': quantity
-            };            
-    
-            const itemIndex = cartData.findIndex(cart => cart.product_id == product_id);
-            // if item exists then delete the indexs
-           if (itemIndex > -1) {
-                cartData[itemToUpdateIndex].quantity += parseInt(quantity);
-           }
-           else {
-                cartData.cart = [...cartData.cart, cart_data];
-           }
-
-           localStorage.setItem("userData", JSON.stringify(userData));
-            alert('Item added successfully into the cart!!')
-            window.location.href = 'shop-cart.html';
-        }else{
-            alert('Kindly Login or Sign-up first to add item in cart!!')
-            window.location.href = 'login.html';
+        
+        if (currentUser) {
+          const userData = JSON.parse(localStorage.getItem('userData'));
+          var i = userData.findIndex((user) => user.user_id === currentUser.user_id);
+          var filteredUserData = userData[i];
+          var cartData = filteredUserData['cart'];
+        
+          // create an object to store the cart data
+          var cart_data = {
+            'product_id': product_id,
+            'quantity': quantity
+          };
+        
+          // check if the product already exists in the cart
+          var itemIndex = -1;
+          for (var j = 0; j < cartData.length; j++) {
+            if (cartData[j].product_id == product_id) {
+              itemIndex = j;
+              break;
+            }
+          }
+        
+          // if item exists then update its quantity
+          if (itemIndex > -1) {
+            cartData[itemIndex].quantity += parseInt(quantity);
+          } else {
+            // otherwise, add the item to the cart
+            cartData.push(cart_data);
+          }
+        
+          localStorage.setItem("userData", JSON.stringify(userData));
+          alert('Item added successfully into the cart!!')
+          window.location.href = 'shop-cart.html';
+        } else {
+          alert('Kindly Login or Sign-up first to add item in cart!!')
+          window.location.href = 'login.html';
         }
+        
     });
 
 });
